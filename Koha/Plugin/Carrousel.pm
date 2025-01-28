@@ -398,7 +398,7 @@ sub generateJSONFile {
     my $hash = "carrousel";
     my $filename = "$hash.json";
     my $path = File::Spec->catdir( C4::Context->config('upload_path'), "${hash}_${filename}" );
-    open my $fh, ">", $path;
+    open (my $fh, ">", $path) or die "Unable to open $path";
     print $fh encode_json(\@json);
     close $fh;
 
